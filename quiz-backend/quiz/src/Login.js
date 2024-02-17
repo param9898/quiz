@@ -12,25 +12,34 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("called");
+
 
     try {
-      const response = await axios.post("http://localhost:8080/login", {
-        username: username,
-        password: password,
+      const response = await axios.post("http://localhost:8080/api/users/login", {
+         username, password,
       });
+      console.log(response.data);
+      console.log(response.status);
 
-      const role = response.data;
-      // Handle the role based on the response
-      if (role === "admin") {
-        // navigate("/admin");
-        navigate("/admin", { state: { username: username } });
-      } else if (role === "user") {
-        // Redirect to the user page
-        navigate("/user", { state: { username: username } });
-        // navigate("/user");
-        setError("User logged");
-      } else {
-        setError("Invalid credentials");
+
+
+      if(response.status==200) {
+        console.log("200");
+        const role = response.data.role;
+        // Handle the role based on the response
+        if (role === "admin") {
+          // navigate("/admin");
+          navigate("/admin", {state: {username: username}});
+        } else if (role === "user") {
+          // Redirect to the user page
+          navigate("/user", {state: {username: username}});
+          // navigate("/user");
+          setError("User logged");
+        } else {
+          setError("Invalid credentials");
+        }
+
       }
     } catch (error) {
       setError("Failed to log in");

@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { HeaderNav } from "./HeaderNav";
 import { useLocation } from "react-router-dom";
@@ -13,6 +13,19 @@ const AdminLogin = () => {
   const [correctSolution, setCorrectSolution] = useState("");
   const [technology, setTechnology] = useState("");
   const [error, setError] = useState("");
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/users/hello');
+      //setItems(response.data.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
   const location = useLocation();
   const username = location.state?.username;

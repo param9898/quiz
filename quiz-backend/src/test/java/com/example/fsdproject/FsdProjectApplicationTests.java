@@ -1,13 +1,13 @@
-package com.example.quizbackend;
+package com.example.fsdproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class QuizBackendApplicationTests {
+class FsdProjectApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
