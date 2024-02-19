@@ -12,34 +12,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("called");
-
 
     try {
-      const response = await axios.post("http://localhost:8080/api/users/login", {
-         username, password,
+      const response = await axios.post("http://localhost:8080/login", {
+        username: username,
+        password: password,
       });
-      console.log(response.data);
-      console.log(response.status);
 
-
-
-      if(response.status==200) {
-        console.log("200");
-        const role = response.data.role;
-        // Handle the role based on the response
-        if (role === "admin") {
-          // navigate("/admin");
-          navigate("/admin", {state: {username: username}});
-        } else if (role === "user") {
-          // Redirect to the user page
-          navigate("/user", {state: {username: username}});
-          // navigate("/user");
-          setError("User logged");
-        } else {
-          setError("Invalid credentials");
-        }
-
+      const role = response.data;
+      // Handle the role based on the response
+      if (role === "admin") {
+        // navigate("/admin");
+        navigate("/admin", { state: { username: username } });
+      } else if (role === "user") {
+        // Redirect to the user page
+        navigate("/user", { state: { username: username } });
+        // navigate("/user");
+        setError("User logged");
+      } else {
+        setError("Invalid credentials");
       }
     } catch (error) {
       setError("Failed to log in");
@@ -47,36 +38,35 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Online Quiz App</h1>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            className="form-control"
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            className="form-control"
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Log In
-        </button>
-        {error && <div className="text-danger">{error}</div>}
-      </form>
-    </div>
+      <div className="container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+                className="form-control"
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+                className="form-control"
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button className="btn btn-primary" type="submit">
+            Log In
+          </button>
+          {error && <div className="text-danger">{error}</div>}
+        </form>
+      </div>
   );
 };
 

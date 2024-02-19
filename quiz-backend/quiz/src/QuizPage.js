@@ -13,7 +13,7 @@ const QuizPage = () => {
   const [totalMarks, setTotalMarks] = useState(0);
 
   const location = useLocation();
-  const username = location.state?.username;
+  const username = "Param";
 
   useEffect(() => {
     fetchQuizList();
@@ -152,6 +152,7 @@ const QuizPage = () => {
               ))}
             </select>
           </div>
+          <br/>
           {selectedTechnology && (
             <div className="mb-3">
               <label className="form-label">Select Quiz:</label>

@@ -125,12 +125,16 @@ const AdminLogin = () => {
               </div>
               <div className="form-group">
                 <label className="label">Technology:</label>
-                <input
+                <select
                   type="text"
                   className="input"
                   value={technology}
                   onChange={(e) => setTechnology(e.target.value)}
-                />
+                >
+                  <option value="">Select Technology</option>
+                  <option value="1">GK</option>
+                  <option value="2">Programming</option>
+                </select>
               </div>
               <button type="submit" className="btn">
                 Add Question
