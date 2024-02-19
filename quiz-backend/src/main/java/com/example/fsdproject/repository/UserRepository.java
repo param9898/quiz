@@ -1,12 +1,14 @@
 package com.example.fsdproject.repository;
 
-import com.example.fsdproject.entity.User;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
-    User findByEmail(String email);
+import com.example.fsdproject.entity.Users;
 
-
-
+@Repository
+public interface UserRepository extends JpaRepository<Users, Long> {
+    // Custom methods for user-related operations
+    public List<Users> findByUsername(String username);
 }

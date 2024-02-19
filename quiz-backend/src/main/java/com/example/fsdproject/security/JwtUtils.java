@@ -1,9 +1,5 @@
 package com.example.fsdproject.security;
 
-import com.example.fsdproject.entity.User;
-
-import java.util.Date;
-
 public class JwtUtils {
 
     private static final long EXPIRATION_TIME = 86400000; // 1 day in milliseconds
