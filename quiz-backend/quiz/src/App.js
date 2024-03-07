@@ -5,6 +5,7 @@ import AdminLogin from "./AdminLogin";
 import ShowQuestions from "./ShowQuestion";
 import QuizGenerator from "./QuizGenerator";
 import QuizPage from "./QuizPage";
+import SignUp from "./Signup";
 import ShowUserResponse from "./ShowUserResponse";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/user" element={<QuizPage />} />
         <Route path="/admin/show-question" element={<ShowQuestions />} />
