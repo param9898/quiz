@@ -53,6 +53,7 @@ const SignUp = () => {
               className="form-control"
               type="text"
               id="username"
+              placeholder="Enter username here.."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -63,8 +64,20 @@ const SignUp = () => {
               className="form-control"
               type="email"
               id="email"
+              placeholder="Enter email address here.."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="contactInfo">Contact No:</label>
+            <input
+              className="form-control"
+              type="text"
+              id="contactInfo"
+              placeholder="Enter mobile no. here.."
+              value={contactInfo}
+              onChange={(e) => setContactInfo(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -73,6 +86,7 @@ const SignUp = () => {
               className="form-control"
               type="password"
               id="password"
+              placeholder="Enter password here.."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -83,20 +97,12 @@ const SignUp = () => {
               className="form-control"
               type="password"
               id="confirmPassword"
+              placeholder="Confirm your password.."
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="contactInfo">Contact Information:</label>
-            <input
-              className="form-control"
-              type="text"
-              id="contactInfo"
-              value={contactInfo}
-              onChange={(e) => setContactInfo(e.target.value)}
-            />
-          </div>
+          
           <button className="btn btn-primary" type="submit">
             Sign Up
           </button>

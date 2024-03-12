@@ -15,16 +15,13 @@ const Login = () => {
       console.log(username);
       console.log(password);
       const response = await axios.post("http://localhost:8080/login", {
-        
         username: username,
         password: password,
       });
-
+      console.log("123");
       const role = response.data;
 
-      if (role === "admin") {
-        navigate("/admin", { state: { username: username } });
-      } else if (role === "user") {
+      if (role === "user") {
         navigate("/user", { state: { username: username } });
         setError("User logged");
       } else {

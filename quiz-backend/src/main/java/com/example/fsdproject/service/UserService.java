@@ -38,7 +38,7 @@ public class UserService {
         user.setUsername(updatedUser.getUsername());
         user.setPassword(updatedUser.getPassword());
         user.setEmail(updatedUser.getEmail());
-        user.setAdmin(updatedUser.isAdmin());
+        user.setIsAdmin(updatedUser.isAdmin());
         return userRepository.save(user);
     }
 
